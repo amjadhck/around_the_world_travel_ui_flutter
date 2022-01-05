@@ -1,3 +1,4 @@
+import 'package:around_the_world_travel_ui_flutter/screens/destination_screen.dart';
 import 'package:around_the_world_travel_ui_flutter/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSwatch()
             .copyWith(secondary: const Color(0xFFD8ECF1)),
       ),
-      home: HomeScreen(),
+      home: const HomeScreen(),
+      routes: {
+        //DestinationScreen.id: (context) => DestinationScreen(),
+      },
     );
   }
 }

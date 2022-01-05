@@ -1,4 +1,7 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:around_the_world_travel_ui_flutter/widgets/destination_carousel.dart';
+import 'package:around_the_world_travel_ui_flutter/widgets/hotel_caresoul.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -11,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIconIndex = 0;
+  int _currentTab = 0;
 
   final List<IconData> _icons = [
     FontAwesomeIcons.plane,
@@ -80,8 +84,37 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 20,
             ),
             const DestinationCarousel(),
+            const SizedBox(
+              height: 20,
+            ),
+            const HotelCaresoul(),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentTab,
+        onTap: (int value) {
+          setState(() {
+            _currentTab = value;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            title: SizedBox.shrink(),
+            icon: Icon(Icons.search, size: 30),
+          ),
+          BottomNavigationBarItem(
+            title: SizedBox.shrink(),
+            icon: Icon(Icons.local_pizza, size: 30),
+          ),
+          BottomNavigationBarItem(
+            title: SizedBox.shrink(),
+            icon: CircleAvatar(
+              radius: 15,
+              backgroundImage: NetworkImage("http://i.imgur.com/zL4Krbz.jpg"),
+            ),
+          ),
+        ],
       ),
     );
   }
